@@ -47,6 +47,7 @@ conv_arr[3]="V2"
 conv_arr[4]="OGG"
 conv_arr[5]="AAC"	# normal faac encoder / recommended to only use faac or only nero aac
 #conv_arr[6]="nAAC"	# nero aac encoder / recommended to only use faac or only nero aac
+conv_arr[7]="OPUS"
 
 # Define the destination folder for each type. Trailing slash required.
 dest_arr[1]="What_320/"
@@ -55,6 +56,7 @@ dest_arr[3]="What_V2/"
 dest_arr[4]="What_OGG/"
 dest_arr[5]="What_AAC/"
 dest_arr[6]="What_nAAC/"
+dest_arr[7]="What_OPUS/"
 
 # Define the file extension for each type
 ext_arr[1]="mp3"
@@ -63,6 +65,7 @@ ext_arr[3]="mp3"
 ext_arr[4]="ogg"
 ext_arr[5]="m4a"
 ext_arr[6]="m4aNero"	# Although the "nero" is there, it will get ignored by the script - this is just to differentiate between the faac and nero encoder
+ext_arr[7]="opus"
 
 # Define the conversion options for each type
 opt_arr[1]="-b 320 --replaygain-accurate --id3v2-only"
@@ -71,6 +74,7 @@ opt_arr[3]="--vbr-new -V 2 --replaygain-accurate --id3v2-only"
 opt_arr[4]="-q 8"
 opt_arr[5]="-RCws -c 44100 -b 320" # For transcoding vinly those options are recommended: -RCws -c 48000 -b 320
 opt_arr[6]="-br 320000"
+opt_arr[7]="--bitrate 192"
 
 # Add conversion type name to the transcoded folders? Set "0" to NOT add and set "1" to add the conversion name.
 conv_create="1"

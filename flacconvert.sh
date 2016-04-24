@@ -279,6 +279,23 @@ function create_naac
 }
 
 
+function create_opus
+{
+    flacfile="$1"
+    opt="$2"
+    outputfile="$3"
+
+    # sleep while max number of jobs are running
+    until ((`jobs | wc -l` < maxnum)); do
+        sleep 1
+    done
+
+    debug " Encoding `basename "$flacfile"` to $outputfile"
+    (nice opusenc $opt "$flacfile" "$outputfile" &>/dev/null
+    check_exit_codes oggenc) &
+}
+
+
 function convert_path
 {
     local base="$1"             # with trailing slash
@@ -334,6 +351,7 @@ function convert_flacs
             ogg) create_ogg "$flacfile" "$opt" "$outputfile";;
             m4a) create_aac "$flacfile" "$opt" "$outputfile";;
             m4aNero) create_naac "$flacfile" "$opt" "$outputfile";;
+            opus) create_opus "$flacfile" "$opt" "$outputfile";;
         esac
         # find album path in order to touch the album dir to change last modified date
         album_tmp=$(dirname "$outputfile")
